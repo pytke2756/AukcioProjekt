@@ -49,10 +49,44 @@ public class Festmeny {
     }
 
     public void licit(){
-
+        if (this.getElkelt()){
+            System.out.println("A festmény már ekelt!");
+        }
+        else if (this.getLicitekSzama() == 0){
+            this.legmagasabbLicit = 100;
+            this.licitekSzama++;
+            this.legutolsoLicitIdeje = LocalDateTime.now();
+        }
+        else if (this.getLicitekSzama() > 0){
+            this.legmagasabbLicit *= 1.1;
+            this.licitekSzama++;
+            this.legutolsoLicitIdeje = LocalDateTime.now();
+        }
+        //plussz feadat nincs beleírva
     }
 
     public void licit(int mertek){
+        if (this.getElkelt()){
+            System.out.println("A festmény már ekelt!");
+        }
+        else if (this.getLicitekSzama() == 0){
+            this.legmagasabbLicit = 100;
+            this.licitekSzama++;
+            this.legutolsoLicitIdeje = LocalDateTime.now();
+        }
+        else if (this.getLicitekSzama() > 0){
+            if (mertek > 9 && mertek < 101){
+                String alap = "1.";
+                alap += Integer.toString(mertek);
+                this.legmagasabbLicit *= Double.parseDouble(alap);
+                this.licitekSzama++;
+                this.legutolsoLicitIdeje = LocalDateTime.now();
+            }
+            else {
+                System.out.println("10 és 100 közötti értéket adj meg!");
+            }
 
+        }
+        //plussz feadat nincs beleírva
     }
 }
