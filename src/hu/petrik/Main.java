@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static List<Festmeny> fl1 = new ArrayList<>();
+    public static Random rnd = new Random();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -37,12 +39,11 @@ public class Main {
         }
         fileOlvasas("festmenyek.csv");
 
-
-        for (Festmeny item :
-                fl1) {
-            System.out.println(item);
+        for (int i = 0; i < 20; i++) {
+            int randomSzam = rnd.nextInt(fl1.size() - 1);
+            fl1.get(randomSzam).licit();
         }
-
+        kiir();
     }
    public static void fileOlvasas(String fileName){
         try {
@@ -62,4 +63,12 @@ public class Main {
             System.out.println(e.getMessage());
         }
    }
+
+   public static void kiir(){
+       for (Festmeny item :
+               fl1) {
+           System.out.println(item);
+       }
+   }
+
 }
