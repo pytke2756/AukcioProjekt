@@ -100,7 +100,7 @@ public class Festmeny {
                     + " )db";
         }
         else {
-            return "festo: " + this.cim + " (" + this.getStilus() + ")\n"+
+            return this.getFesto() + ": " + this.cim + " (" + this.getStilus() + ")\n"+
                     this.getLegmagasabbLicit() + "$ - " + this.getLegutolsoLicitIdeje() + "(összesen: " + this.getLicitekSzama()
                     + " db)";
         }

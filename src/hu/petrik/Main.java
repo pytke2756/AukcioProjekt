@@ -14,10 +14,8 @@ public class Main {
 
     public static List<Festmeny> fl1 = new ArrayList<>();
     public static Random rnd = new Random();
-
+    public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
         Festmeny f1 = new Festmeny("cim1", "festo1", "gotika");
         Festmeny f2 = new Festmeny("cim2", "festo2", "gotika2");
 
@@ -44,6 +42,12 @@ public class Main {
             fl1.get(randomSzam).licit();
         }
         kiir();
+        System.out.println("--------------");
+        System.out.println("A legdrágábban elkelt: " + fl1.get(legdragabbanElkelt()));
+
+
+
+
     }
    public static void fileOlvasas(String fileName){
         try {
@@ -69,6 +73,43 @@ public class Main {
                fl1) {
            System.out.println(item);
        }
+   }
+
+   public static void felhasznaloLicit(){
+        int kepSzorszam;
+
+        boolean fut = true;
+        while (fut){
+            System.out.println("Add meg a festmény sorszámát ha 0-t adsz meg kilépek: ");
+            kepSzorszam = sc.nextInt();
+            //nem szám ellenörzés nincs
+            if (fl1.size() < kepSzorszam && 0 > kepSzorszam){
+                System.out.println("Hibás adat");
+                do {
+                    System.out.println("Add meg újra: ");
+                    kepSzorszam = sc.nextInt();
+                }while(kepSzorszam > fl1.size() && kepSzorszam < 0);
+            }
+            if (fl1.get(kepSzorszam - 1).getElkelt()){
+                System.out.println("Adj meg egy másik képet: ");
+                kepSzorszam = sc.nextInt();
+            }
+
+
+        }
+
+   }
+
+   public static int legdragabbanElkelt(){
+       int legdragabbIndex = 0;
+       for (int i = 0; i < fl1.size(); i++) {
+           if (fl1.get(i).getElkelt()){
+               if (fl1.get(i).getLegmagasabbLicit() > fl1.get(legdragabbIndex).getLegmagasabbLicit()){
+                   legdragabbIndex = i;
+               }
+           }
+       }
+       return legdragabbIndex;
    }
 
 }
