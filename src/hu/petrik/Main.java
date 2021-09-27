@@ -44,7 +44,16 @@ public class Main {
         kiir();
         System.out.println("--------------");
         System.out.println("A legdrágábban elkelt: " + fl1.get(legdragabbanElkelt()));
-
+        String vanETiznelTobb = tiznelTobbLicit() ? "Van olyan festmény ami 10-nél több licitet kapott.":
+                "Nincs olyan festmény amit 10-nél több licitet kapott volna";
+        System.out.println(vanETiznelTobb);
+        System.out.printf("%d db festmény nem kelt el.", elkeltFestmenyek());
+        legmagasabbLicitCsökkent();
+        System.out.println("-----------------------");
+        for (Festmeny item :
+                fl1) {
+            System.out.println(item);
+        }
 
 
 
@@ -112,4 +121,37 @@ public class Main {
        return legdragabbIndex;
    }
 
+   public static boolean tiznelTobbLicit(){
+       boolean van = false;
+       for (Festmeny item : fl1) {
+           if (item.getLicitekSzama() > 10){
+               van = true;
+           }
+       }
+       return van;
+   }
+
+   public static int elkeltFestmenyek(){
+       int osszes = 0;
+       for (Festmeny item : fl1) {
+           if (!item.getElkelt()){
+               osszes++;
+           }
+       }
+       return osszes;
+   }
+
+   public static void legmagasabbLicitCsökkent(){
+       Festmeny temp;
+       int n = fl1.size();
+       for (int i = n - 1; i > 0; i--) {
+           for (int j = 0; j < i; j++) {
+               if (fl1.get(j).getLegmagasabbLicit() < fl1.get(j + 1).getLegmagasabbLicit()){
+                   temp = fl1.get(j);
+                   fl1.set(j, fl1.get(j + 1));
+                   fl1.set(j + 1, temp);
+               }
+           }
+       }
+   }
 }
