@@ -96,13 +96,13 @@ public class Festmeny {
             String elkeltSzoveg = this.getElkelt() ? "Elkelt" : "Nem kelt el";
             return "festo: " + this.cim + " (" + this.getStilus() + ")\n"+
             elkeltSzoveg + "\n" +
-            this.getLegmagasabbLicit() + "$ - " + this.getLegutolsoLicitIdeje() + "(összesen: )" + this.getLicitekSzama()
-                    + " db";
+            this.getLegmagasabbLicit() + "$ - " + this.getLegutolsoLicitIdeje() + "(összesen: " + this.getLicitekSzama()
+                    + " )db";
         }
         else {
             return "festo: " + this.cim + " (" + this.getStilus() + ")\n"+
-                    this.getLegmagasabbLicit() + "$ - " + this.getLegutolsoLicitIdeje() + "(összesen: )" + this.getLicitekSzama()
-                    + " db";
+                    this.getLegmagasabbLicit() + "$ - " + this.getLegutolsoLicitIdeje() + "(összesen: " + this.getLicitekSzama()
+                    + " db)";
         }
     }
 }

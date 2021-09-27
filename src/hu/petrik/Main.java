@@ -35,9 +35,16 @@ public class Main {
             Festmeny obj = new Festmeny(cim, festo, stilus);
             fl1.add(obj);
         }
+        fileOlvasas("festmenyek.csv");
+
+
+        for (Festmeny item :
+                fl1) {
+            System.out.println(item);
+        }
 
     }
-   public void fileOlvasas(String fileName){
+   public static void fileOlvasas(String fileName){
         try {
             FileReader fr = new FileReader(fileName);
             BufferedReader br = new BufferedReader(fr);
